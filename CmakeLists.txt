@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.10)
+project(TinyEngineTutorial)
+
+
+set(CMAKE_CXX_STANDARD 17)
+
+set(SOURCES
+    src/main.cpp
+    src/client.cpp
+    src/clientmanager.cpp
+    src/mlp.cpp
+    src/nn.cpp
+)
+
+
+add_executable(TinyEngineTutorial ${SOURCES})
+
+target_include_directories(TinyEngineTutorial PRIVATE ${PROJECT_SOURCE_DIR}/include)
