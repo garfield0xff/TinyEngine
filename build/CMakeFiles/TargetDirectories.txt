@@ -1,0 +1,3 @@
+/Users/gyujinkim/Desktop/Ai/TinyEngine/build/CMakeFiles/TinyEngineTutorial.dir
+/Users/gyujinkim/Desktop/Ai/TinyEngine/build/CMakeFiles/edit_cache.dir
+/Users/gyujinkim/Desktop/Ai/TinyEngine/build/CMakeFiles/rebuild_cache.dir

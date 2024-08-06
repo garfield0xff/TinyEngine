@@ -10,6 +10,7 @@ set(SOURCES
     src/clientmanager.cpp
     src/mlp.cpp
     src/nn.cpp
+    src/cnn.cpp
 )
 
 

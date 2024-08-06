@@ -1,5 +1,4 @@
 #include "mlp.h"
-#include <vector>
 #include <algorithm>
 #include <ctime>
 #include <random>
@@ -50,3 +49,5 @@ void MLP::startMLP(int epoch) {
     }
     cout << "Updated weights : " << weights << "  Updated bias : " << bias << endl;
 }
+
+MLP::~MLP() {}

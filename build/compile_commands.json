@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/main.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/main.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/main.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/client.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/client.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/client.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/client.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/clientmanager.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/clientmanager.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/clientmanager.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/clientmanager.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/mlp.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/mlp.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/mlp.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/mlp.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/nn.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/nn.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/nn.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/nn.cpp.o"
+},
+{
+  "directory": "/Users/gyujinkim/Desktop/Ai/TinyEngine/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/gyujinkim/Desktop/Ai/TinyEngine/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -o CMakeFiles/TinyEngineTutorial.dir/src/cnn.cpp.o -c /Users/gyujinkim/Desktop/Ai/TinyEngine/src/cnn.cpp",
+  "file": "/Users/gyujinkim/Desktop/Ai/TinyEngine/src/cnn.cpp",
+  "output": "CMakeFiles/TinyEngineTutorial.dir/src/cnn.cpp.o"
+}
+]
