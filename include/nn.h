@@ -4,17 +4,19 @@
 #include "engine.h"
 #include <vector>
 
+using namespace std;
+
 class NeuralNetwork : public TinyEngine {
-
 public:
-    
+
+
+
+    // NeuralNetwork();
+    // ~NeuralNetwork();
+
     double gradientUpdate();
-    
-
-
     void activateFunction();
     void backPropogation();
-    
     void batchNormalization();
 };
 
