@@ -3,6 +3,7 @@
 
 #include "nn.h"
 
+
 class MLP : public NeuralNetwork {
 
 private:
