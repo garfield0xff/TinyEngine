@@ -16,6 +16,7 @@ set(SOURCES
     src/codegen.cpp
     src/conv2d.cpp
     src/main.cpp
+    src/profiler.cpp
 )
 
 add_executable(CodeGenerator ${SOURCES})
