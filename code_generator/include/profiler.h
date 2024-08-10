@@ -5,18 +5,16 @@
 #include <tensorflow/lite/kernels/register.h>
 #include <tensorflow/lite/model.h>
 #include <tensorflow/lite/schema/schema_generated.h>
+#include <opencv2/opencv.hpp>
+
 
 using namespace tflite;
 
 class TensorProfiler {
-
 public:
-    void printTensorInfo(const Tensor *tensor, const Model *model);
+    void saveModelInfo(const tflite::Model* tf_model, const string& output_path );
+    void runInference(tflite::Interpreter *interpreter, const cv::Mat& input_img);
     
-    void printOperatorInfo(const Operator *op, const Model *model, const SubGraph *subgraph);
-    
-
-
 };
 
 #endif //TENSOR_PROFILER_H

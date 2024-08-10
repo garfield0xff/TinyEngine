@@ -1,42 +1,39 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <opencv2/opencv.hpp>
 #include "profiler.h"
 
-int main() {
-    const char* model_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/mobilenet_v2.tflite";
 
-    // 모델 읽기
+int main() {
+    const char* model_path = "mobilenet_v2.tflite";
+    const char* save_file_path = "model_info.txt";
+    const char* img_path = "test_image_dataset/person3.png";
+    
+    // model ownership (not copy)
     std::unique_ptr<tflite::FlatBufferModel> model = tflite::FlatBufferModel::BuildFromFile(model_path);
     if (!model) {
         std::cerr << "Failed to load model" << std::endl;
         return -1;
     }
 
-    // 모델의 기본 정보를 출력
     const tflite::Model* tf_model = model->GetModel();
-    if (tf_model->subgraphs()->size() == 0) {
-        std::cerr << "Model has no subgraphs" << std::endl;
-        return -1;
-    }
 
-    const tflite::SubGraph* subgraph = tf_model->subgraphs()->Get(0);
-    std::cout << "Number of Tensors: " << subgraph->tensors()->size() << std::endl;
-    std::cout << "Number of Operators: " << subgraph->operators()->size() << std::endl;
+    tflite::ops::builtin::BuiltinOpResolver resolver;
+    tflite::InterpreterBuilder builder(*model, resolver);
+    std::unique_ptr<tflite::Interpreter> interpreter;
+    builder(&interpreter);
 
-    std::ofstream outfile("/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/model_info.txt");
-    if (!outfile.is_open()) {
-        std::cerr << "Failed to open file for writing" << std::endl;
-        return -1;
-    }
 
     TensorProfiler tp1;
+    
+    cv::Mat input_img = cv::imread(img_path);
 
-    // 각 연산자와 텐서 정보를 출력
-    for (size_t i = 0; i < subgraph->operators()->size(); ++i) {
-        auto op = subgraph->operators()->Get(i);
-        tp1.printOperatorInfo(op, tf_model, subgraph);
-    }
+
+    tp1.saveModelInfo(tf_model, save_file_path);
+    tp1.runInference(interpreter.get(), input_img);
+
+
 
     return 0;
 }

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 project(CodeGenerator)
 
 set(CMAKE_CXX_STANDARD 17)
+find_package(OpenCV REQUIRED)
 
 set(TFLITE_LIB_PATH "${CMAKE_SOURCE_DIR}/tensorflow/bazel-bin/tensorflow/lite")
 set(TFLITE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/tensorflow")
@@ -9,8 +10,12 @@ set(TFLITE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/tensorflow")
 set(FLATBUFFERS_INCLUDE_DIR "/opt/homebrew/include")
 set(FLATBUFFERS_LIB_DIR "/opt/homebrew/lib")
 
+
+
 include_directories(${TFLITE_INCLUDE_PATH} ${FLATBUFFERS_INCLUDE_DIR})
 link_directories(${TFLITE_LIB_PATH} ${FLATBUFFERS_LIB_DIR})
+
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(SOURCES
     src/codegen.cpp
@@ -21,6 +26,6 @@ set(SOURCES
 
 add_executable(CodeGenerator ${SOURCES})
 
-target_link_libraries(CodeGenerator tensorflowlite flatbuffers)
+target_link_libraries(CodeGenerator tensorflowlite flatbuffers ${OpenCV_LIBS})
 
-target_include_directories(CodeGenerator PRIVATE ${PROJECT_SOURCE_DIR}/include ${FLATBUFFERS_INCLUDE_DIR})
+target_include_directories(CodeGenerator PRIVATE ${PROJECT_SOURCE_DIR}/include ${FLATBUFFERS_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
