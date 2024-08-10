@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 project(CodeGenerator)
 
 set(CMAKE_CXX_STANDARD 17)
+
 find_package(OpenCV REQUIRED)
+
 
 set(TFLITE_LIB_PATH "${CMAKE_SOURCE_DIR}/tensorflow/bazel-bin/tensorflow/lite")
 set(TFLITE_INCLUDE_PATH "${CMAKE_SOURCE_DIR}/tensorflow")

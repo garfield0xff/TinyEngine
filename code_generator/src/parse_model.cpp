@@ -2,12 +2,6 @@
 #include <tensorflow/lite/kernels/register.h>
 #include <tensorflow/lite/model.h>
 
-// 모델 파일 경로
-const char* model_path = "mobilenet_v2.tflite";
-
-std::unique_ptr<tflite::FlatBufferModel> loadModel(const char* model_path) {
-    return tflite::FlatBufferModel::BuildFromFile(model_path);
-}
 
 void parseModel(std::unique_ptr<tflite::FlatBufferModel>& model) {
     const tflite::Model* tf_model = model->GetModel();
@@ -36,13 +30,3 @@ void parseModel(std::unique_ptr<tflite::FlatBufferModel>& model) {
     }
 }
 
-int main() {
-    std::unique_ptr<tflite::FlatBufferModel> model = loadModel(model_path);
-    if (!model) {
-        std::cerr << "Failed to load model" << std::endl;
-        return -1;
-    }
-
-    parseModel(model);
-    return 0;
-}

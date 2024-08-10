@@ -1,7 +1,7 @@
 #include "profiler.h"
 #include <iostream>
 #include <fstream>
-
+#include <json/json.h>
 
 /* 
     Save Model Information
@@ -58,13 +58,15 @@ void TensorProfiler::saveModelInfo(const tflite::Model* tf_model, const string& 
 
     const tflite::SubGraph* subgraph = tf_model->subgraphs()->Get(0);
     output_file << "Number of Tensors: " << subgraph->tensors()->size() << "\n";
+
+    // all operator size 
     output_file << "Number of Operators: " << subgraph->operators()->size() << "\n";
 
     for (size_t i = 0; i < subgraph->operators()->size(); ++i) {
         auto op = subgraph->operators()->Get(i);
         auto opcode_index = op->opcode_index();
         auto opcode = tf_model->operator_codes()->Get(opcode_index)->builtin_code();
-
+        // std::cout << "Operator : " << tflite::EnumNameBuiltinOperator(opcode) << "\n";
         output_file << "Operator : " << tflite::EnumNameBuiltinOperator(opcode) << "\n";
         output_file << "----------------- Input Tensors -------------------" << "\n";
         for (size_t i = 0; i < op->inputs()->size(); ++i) {
