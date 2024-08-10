@@ -1,0 +1,1844 @@
+Number of Tensors: 177
+Number of Operators: 69
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: serving_default_keras_tensor_154:0
+Tensor Type: FLOAT32
+Tensor Shape: [1, 224, 224, 3]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/Conv1_1/convolution
+Tensor Type: FLOAT32
+Tensor Shape: [32, 3, 3, 3]
+Tensor Buffer Size: 3456 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/Conv1_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/Conv1_1/convolution;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [32]
+Tensor Buffer Size: 128 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/Conv1_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/Conv1_1/convolution;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/sub1
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/Conv1_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/Conv1_1/convolution;sequential_1/mobilenetv2_1.00_224_1/bn_Conv1_1/batchnorm/sub1
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant67
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 32]
+Tensor Buffer Size: 1152 bytes
+---------------------------------------------------
+Tensor Name: arith.constant33
+Tensor Type: FLOAT32
+Tensor Shape: [32]
+Tensor Buffer Size: 128 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_1/depthwise;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_depthwise_1/depthwise;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant101
+Tensor Type: FLOAT32
+Tensor Shape: [16, 1, 1, 32]
+Tensor Buffer Size: 2048 bytes
+---------------------------------------------------
+Tensor Name: arith.constant66
+Tensor Type: FLOAT32
+Tensor Shape: [16]
+Tensor Buffer Size: 64 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/expanded_conv_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_project_1/convolution;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 16]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/expanded_conv_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/expanded_conv_project_1/convolution;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 16]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant100
+Tensor Type: FLOAT32
+Tensor Shape: [96, 1, 1, 16]
+Tensor Buffer Size: 6144 bytes
+---------------------------------------------------
+Tensor Name: arith.constant32
+Tensor Type: FLOAT32
+Tensor Shape: [96]
+Tensor Buffer Size: 384 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : PAD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_1_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 112, 112, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant103
+Tensor Type: INT32
+Tensor Shape: [4, 2]
+Tensor Buffer Size: 32 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 113, 113, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 113, 113, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant65
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 96]
+Tensor Buffer Size: 3456 bytes
+---------------------------------------------------
+Tensor Name: arith.constant31
+Tensor Type: FLOAT32
+Tensor Shape: [96]
+Tensor Buffer Size: 384 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_1_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant99
+Tensor Type: FLOAT32
+Tensor Shape: [24, 1, 1, 96]
+Tensor Buffer Size: 9216 bytes
+---------------------------------------------------
+Tensor Name: arith.constant64
+Tensor Type: FLOAT32
+Tensor Shape: [24]
+Tensor Buffer Size: 96 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant98
+Tensor Type: FLOAT32
+Tensor Shape: [144, 1, 1, 24]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant30
+Tensor Type: FLOAT32
+Tensor Shape: [144]
+Tensor Buffer Size: 576 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_2_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant63
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 144]
+Tensor Buffer Size: 5184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant29
+Tensor Type: FLOAT32
+Tensor Shape: [144]
+Tensor Buffer Size: 576 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_2_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant97
+Tensor Type: FLOAT32
+Tensor Shape: [24, 1, 1, 144]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant62
+Tensor Type: FLOAT32
+Tensor Shape: [24]
+Tensor Buffer Size: 96 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_2_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_1_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_1_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_2_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_2_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_2_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 24]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant96
+Tensor Type: FLOAT32
+Tensor Shape: [144, 1, 1, 24]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant28
+Tensor Type: FLOAT32
+Tensor Shape: [144]
+Tensor Buffer Size: 576 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : PAD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_3_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 56, 56, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant103
+Tensor Type: INT32
+Tensor Shape: [4, 2]
+Tensor Buffer Size: 32 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 57, 57, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 57, 57, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant61
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 144]
+Tensor Buffer Size: 5184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant27
+Tensor Type: FLOAT32
+Tensor Shape: [144]
+Tensor Buffer Size: 576 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_3_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 144]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant95
+Tensor Type: FLOAT32
+Tensor Shape: [32, 1, 1, 144]
+Tensor Buffer Size: 18432 bytes
+---------------------------------------------------
+Tensor Name: arith.constant60
+Tensor Type: FLOAT32
+Tensor Shape: [32]
+Tensor Buffer Size: 128 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant94
+Tensor Type: FLOAT32
+Tensor Shape: [192, 1, 1, 32]
+Tensor Buffer Size: 24576 bytes
+---------------------------------------------------
+Tensor Name: arith.constant26
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_4_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant59
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 192]
+Tensor Buffer Size: 6912 bytes
+---------------------------------------------------
+Tensor Name: arith.constant25
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_4_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant93
+Tensor Type: FLOAT32
+Tensor Shape: [32, 1, 1, 192]
+Tensor Buffer Size: 24576 bytes
+---------------------------------------------------
+Tensor Name: arith.constant58
+Tensor Type: FLOAT32
+Tensor Shape: [32]
+Tensor Buffer Size: 128 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_4_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_3_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_3_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_4_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_4_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant92
+Tensor Type: FLOAT32
+Tensor Shape: [192, 1, 1, 32]
+Tensor Buffer Size: 24576 bytes
+---------------------------------------------------
+Tensor Name: arith.constant24
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_5_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant57
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 192]
+Tensor Buffer Size: 6912 bytes
+---------------------------------------------------
+Tensor Name: arith.constant23
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_5_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant91
+Tensor Type: FLOAT32
+Tensor Shape: [32, 1, 1, 192]
+Tensor Buffer Size: 24576 bytes
+---------------------------------------------------
+Tensor Name: arith.constant56
+Tensor Type: FLOAT32
+Tensor Shape: [32]
+Tensor Buffer Size: 128 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_5_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_4_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_5_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_5_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_5_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 32]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant90
+Tensor Type: FLOAT32
+Tensor Shape: [192, 1, 1, 32]
+Tensor Buffer Size: 24576 bytes
+---------------------------------------------------
+Tensor Name: arith.constant22
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : PAD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_6_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 28, 28, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant103
+Tensor Type: INT32
+Tensor Shape: [4, 2]
+Tensor Buffer Size: 32 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 29, 29, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 29, 29, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant55
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 192]
+Tensor Buffer Size: 6912 bytes
+---------------------------------------------------
+Tensor Name: arith.constant21
+Tensor Type: FLOAT32
+Tensor Shape: [192]
+Tensor Buffer Size: 768 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_6_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 192]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant89
+Tensor Type: FLOAT32
+Tensor Shape: [64, 1, 1, 192]
+Tensor Buffer Size: 49152 bytes
+---------------------------------------------------
+Tensor Name: arith.constant54
+Tensor Type: FLOAT32
+Tensor Shape: [64]
+Tensor Buffer Size: 256 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant88
+Tensor Type: FLOAT32
+Tensor Shape: [384, 1, 1, 64]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant20
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_7_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant53
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 384]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant19
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_7_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant87
+Tensor Type: FLOAT32
+Tensor Shape: [64, 1, 1, 384]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant52
+Tensor Type: FLOAT32
+Tensor Shape: [64]
+Tensor Buffer Size: 256 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_7_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_6_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_6_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_7_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_7_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant86
+Tensor Type: FLOAT32
+Tensor Shape: [384, 1, 1, 64]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant18
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_8_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant51
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 384]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant17
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_8_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant85
+Tensor Type: FLOAT32
+Tensor Shape: [64, 1, 1, 384]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant50
+Tensor Type: FLOAT32
+Tensor Shape: [64]
+Tensor Buffer Size: 256 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_8_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_7_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_8_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_8_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant84
+Tensor Type: FLOAT32
+Tensor Shape: [384, 1, 1, 64]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant16
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_9_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant49
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 384]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant15
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_9_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant83
+Tensor Type: FLOAT32
+Tensor Shape: [64, 1, 1, 384]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant48
+Tensor Type: FLOAT32
+Tensor Shape: [64]
+Tensor Buffer Size: 256 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_9_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_8_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_9_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_9_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_9_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 64]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant82
+Tensor Type: FLOAT32
+Tensor Shape: [384, 1, 1, 64]
+Tensor Buffer Size: 98304 bytes
+---------------------------------------------------
+Tensor Name: arith.constant14
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_10_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant47
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 384]
+Tensor Buffer Size: 13824 bytes
+---------------------------------------------------
+Tensor Name: arith.constant13
+Tensor Type: FLOAT32
+Tensor Shape: [384]
+Tensor Buffer Size: 1536 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_10_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 384]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant81
+Tensor Type: FLOAT32
+Tensor Shape: [96, 1, 1, 384]
+Tensor Buffer Size: 147456 bytes
+---------------------------------------------------
+Tensor Name: arith.constant46
+Tensor Type: FLOAT32
+Tensor Shape: [96]
+Tensor Buffer Size: 384 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant80
+Tensor Type: FLOAT32
+Tensor Shape: [576, 1, 1, 96]
+Tensor Buffer Size: 221184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant12
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_11_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant45
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 576]
+Tensor Buffer Size: 20736 bytes
+---------------------------------------------------
+Tensor Name: arith.constant11
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_11_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant79
+Tensor Type: FLOAT32
+Tensor Shape: [96, 1, 1, 576]
+Tensor Buffer Size: 221184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant44
+Tensor Type: FLOAT32
+Tensor Shape: [96]
+Tensor Buffer Size: 384 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_11_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_10_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_10_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_11_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_11_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant78
+Tensor Type: FLOAT32
+Tensor Shape: [576, 1, 1, 96]
+Tensor Buffer Size: 221184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant10
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_12_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant43
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 576]
+Tensor Buffer Size: 20736 bytes
+---------------------------------------------------
+Tensor Name: arith.constant9
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_12_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant77
+Tensor Type: FLOAT32
+Tensor Shape: [96, 1, 1, 576]
+Tensor Buffer Size: 221184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant42
+Tensor Type: FLOAT32
+Tensor Shape: [96]
+Tensor Buffer Size: 384 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_12_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_11_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_12_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_12_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_12_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 96]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant76
+Tensor Type: FLOAT32
+Tensor Shape: [576, 1, 1, 96]
+Tensor Buffer Size: 221184 bytes
+---------------------------------------------------
+Tensor Name: arith.constant8
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : PAD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_13_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 14, 14, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant103
+Tensor Type: INT32
+Tensor Shape: [4, 2]
+Tensor Buffer Size: 32 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 15, 15, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_pad_1/Pad
+Tensor Type: FLOAT32
+Tensor Shape: [1, 15, 15, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant41
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 576]
+Tensor Buffer Size: 20736 bytes
+---------------------------------------------------
+Tensor Name: arith.constant7
+Tensor Type: FLOAT32
+Tensor Shape: [576]
+Tensor Buffer Size: 2304 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_13_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 576]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant75
+Tensor Type: FLOAT32
+Tensor Shape: [160, 1, 1, 576]
+Tensor Buffer Size: 368640 bytes
+---------------------------------------------------
+Tensor Name: arith.constant40
+Tensor Type: FLOAT32
+Tensor Shape: [160]
+Tensor Buffer Size: 640 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant74
+Tensor Type: FLOAT32
+Tensor Shape: [960, 1, 1, 160]
+Tensor Buffer Size: 614400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant6
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_14_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant39
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 960]
+Tensor Buffer Size: 34560 bytes
+---------------------------------------------------
+Tensor Name: arith.constant5
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_14_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant73
+Tensor Type: FLOAT32
+Tensor Shape: [160, 1, 1, 960]
+Tensor Buffer Size: 614400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant38
+Tensor Type: FLOAT32
+Tensor Shape: [160]
+Tensor Buffer Size: 640 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_14_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_13_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_13_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_14_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_14_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant72
+Tensor Type: FLOAT32
+Tensor Shape: [960, 1, 1, 160]
+Tensor Buffer Size: 614400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant4
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_15_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant37
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 960]
+Tensor Buffer Size: 34560 bytes
+---------------------------------------------------
+Tensor Name: arith.constant3
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_15_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant71
+Tensor Type: FLOAT32
+Tensor Shape: [160, 1, 1, 960]
+Tensor Buffer Size: 614400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant36
+Tensor Type: FLOAT32
+Tensor Shape: [160]
+Tensor Buffer Size: 640 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_15_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : ADD
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_14_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_15_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_15_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_15_add_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 160]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant70
+Tensor Type: FLOAT32
+Tensor Shape: [960, 1, 1, 160]
+Tensor Buffer Size: 614400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant2
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : DEPTHWISE_CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_expand_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_16_expand_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant35
+Tensor Type: FLOAT32
+Tensor Shape: [1, 3, 3, 960]
+Tensor Buffer Size: 34560 bytes
+---------------------------------------------------
+Tensor Name: arith.constant1
+Tensor Type: FLOAT32
+Tensor Shape: [960]
+Tensor Buffer Size: 3840 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/mul_1;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_1/depthwise;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/mul;sequential_1/mobilenetv2_1.00_224_1/block_16_depthwise_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 960]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant69
+Tensor Type: FLOAT32
+Tensor Shape: [320, 1, 1, 960]
+Tensor Buffer Size: 1228800 bytes
+---------------------------------------------------
+Tensor Name: arith.constant34
+Tensor Type: FLOAT32
+Tensor Shape: [320]
+Tensor Buffer Size: 1280 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_16_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 320]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : CONV_2D
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/block_16_project_BN_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/block_16_project_1/convolution;sequential_1/mobilenetv2_1.00_224_1/block_16_project_BN_1/batchnorm/sub
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 320]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant68
+Tensor Type: FLOAT32
+Tensor Shape: [1280, 1, 1, 320]
+Tensor Buffer Size: 1638400 bytes
+---------------------------------------------------
+Tensor Name: arith.constant
+Tensor Type: FLOAT32
+Tensor Shape: [1280]
+Tensor Buffer Size: 5120 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/out_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/Conv_1_bn_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/Conv_1_1/convolution;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 1280]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : MEAN
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/mobilenetv2_1.00_224_1/out_relu_1/Relu6;sequential_1/mobilenetv2_1.00_224_1/Conv_1_bn_1/batchnorm/add_1;sequential_1/mobilenetv2_1.00_224_1/Conv_1_1/convolution;
+Tensor Type: FLOAT32
+Tensor Shape: [1, 7, 7, 1280]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: sequential_1/global_average_pooling2d_1/Mean/reduction_indices
+Tensor Type: INT32
+Tensor Shape: [2]
+Tensor Buffer Size: 8 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/global_average_pooling2d_1/Mean
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1280]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : FULLY_CONNECTED
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/global_average_pooling2d_1/Mean
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1280]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+Tensor Name: arith.constant102
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1280]
+Tensor Buffer Size: 5120 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: sequential_1/dense_1/MatMul;sequential_1/dense_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
+Operator : LOGISTIC
+----------------- Input Tensors -------------------
+Tensor Name: sequential_1/dense_1/MatMul;sequential_1/dense_1/Add
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+----------------- Output Tensors -------------------
+Tensor Name: StatefulPartitionedCall_1:0
+Tensor Type: FLOAT32
+Tensor Shape: [1, 1]
+Tensor Buffer Size: 0 bytes
+---------------------------------------------------
+---------------------------------------------------
+
+
+
