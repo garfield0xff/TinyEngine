@@ -7,10 +7,10 @@
 
 
 int main() {
-    const char* model_path = "";
-    const char* save_file_path = "";
+    const char* model_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/person_detection_model.tflite";
+    const char* save_file_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/model_info.txt";
     const char* img_path = "test_image_dataset/person3.png";
-    const char* save_cpp_path = "";
+    const char* save_cpp_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/";
     
     // model ownership (not copy)
     std::unique_ptr<tflite::FlatBufferModel> model = tflite::FlatBufferModel::BuildFromFile(model_path);
@@ -22,8 +22,8 @@ int main() {
     const tflite::Model* tf_model = model->GetModel();
 
     CodeGenerator c1;
+    c1.setCodeGenPath(save_cpp_path);
     c1.parseModel(tf_model);
-    c1.genCppModel(save_cpp_path);
 
     // tflite::ops::builtin::BuiltinOpResolver resolver;
     // tflite::InterpreterBuilder builder(*model, resolver);

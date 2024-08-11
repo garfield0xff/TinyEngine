@@ -19,17 +19,18 @@ protected:
         vector<int> params;
     };
 
-    string gen_code;
+    stringstream gen_code;
     vector<Layer> layers;
+    string codegen_path;
 
 public:
     CodeGenerator();
     ~CodeGenerator();
 
     void parseModel(const tflite::Model* tf_model);
-    
-
     void genHeaders();
+    void genHeaderFile(set<string> op_headers_set);
+    void setCodeGenPath(const string& condegen_path);
     
 
     void genConv2D(const string& op_func, const tflite::Conv2DOptions* conv_options);
@@ -49,7 +50,7 @@ public:
     // void generateDense(const Layer& layer);
     // void applyLoopUnrolling(string& code);
     
-    void genCppModel(const string& output_path);
+    void genCppModel(const string& output_path, bool is_header);
 };
 
 #endif // CODE_GENERATOR_H
