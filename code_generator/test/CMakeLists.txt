@@ -14,13 +14,16 @@ set(FLATBUFFERS_LIB_DIR "/opt/homebrew/lib")
 
 
 
+
 include_directories(${TFLITE_INCLUDE_PATH} ${FLATBUFFERS_INCLUDE_DIR})
 link_directories(${TFLITE_LIB_PATH} ${FLATBUFFERS_LIB_DIR})
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+
 set(SOURCES
-    test.cpp
+    main.cpp
+    code_generator.cpp
 )
 
 add_executable(CodeGenerator ${SOURCES})
