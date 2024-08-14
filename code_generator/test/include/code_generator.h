@@ -15,7 +15,7 @@ class CodeGenerator {
         uint16_t input_y;
         uint16_t input_ch;
         uint8_t* imageBuffer;
-        uint16_t imageBuffer_size;
+        uint32_t imageBuffer_size;
         
     public:
         CodeGenerator();
@@ -23,14 +23,13 @@ class CodeGenerator {
 
         void setImageInputAnd8bitDataBuffer(
             const int image_row_size, const  int image_col_size, const int image_channel,
-            const uint8_t *imageBuffer, uint16_t imageBuffer_size
+            const uint8_t *imageBuffer, uint32_t imageBuffer_size
         );
 
         void parseTFModel(const tflite::Model *tf_model);
         void conv2d(
-            const uint8_t *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
-            const int8_t *kernel, const int32_t *bias,   const int32_t *biasR, const float *scales,
-            const int32_t output_offset, const int32_t input_offset,
+            uint8_t *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
+            const float *kernel, const float *bias, 
             const int32_t output_activation_min,
             const int32_t output_activation_max, 
             int8_t *output, const int16_t output_x, const uint16_t output_y, const uint16_t output_ch,
