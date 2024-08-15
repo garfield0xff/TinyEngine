@@ -44,6 +44,12 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
     // Get tensorflow model backbone
     const tflite::SubGraph* subgraph = tf_model->subgraphs()->Get(0);
 
+    // Store convolution result data buffer
+    int16_t x = 0;
+    int16_t y = 0;
+    int16_t ch = 0;
+    int8_t* data_buffer = imageBuffer; 
+
     bool flag = false;
     for(size_t i = 0; !flag && i < subgraph->operators()->size(); ++i)
     {
@@ -51,8 +57,6 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
         auto op = subgraph->operators()->Get(i);
         auto opcode_index = op->opcode_index();
         auto opcode = tf_model->operator_codes()->Get(opcode_index)->builtin_code();
-        
-
         
         // switch by operator type ex ) CONV2D ,DEPTHWISE_CONV2D
         switch (opcode)
@@ -82,11 +86,76 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
             size_t bias_buffer_size = bias_buffer->data()->size() / sizeof(float);
             std::vector<float> flat_bias_buffer(bias_buffer_size);
             
-
             // // kernel_buffer to  flat kernel buffer
             std::memcpy(flat_filter_buffer.data(), filter_buffer->data()->data(), filter_buffer->data()->size());
             std::memcpy(flat_bias_buffer.data(), bias_buffer->data()->data(), bias_buffer->data()->size());
             
+            auto output_tensor = subgraph->tensors()->Get(op->outputs()->Get(0));
+            // [-1, h, w, c]
+            auto output_shape = output_tensor->shape();
+        
+            std::cout << "output buffer size is : "<< filter_buffer_size << std::endl;
+
+            // temp output buffer -> 값 계산해보고 타입 변환 해줘야됌!
+            data_buffer = new int8_t[output_shape->Get(1) * output_shape->Get(2) * output_shape->Get(3)];
+            std::cout << "iamgeBuffer_index is : " << imageBuffer_size << std::endl;
+            std::cout << "image buffer in last index : " << static_cast<int>(imageBuffer[imageBuffer_size - 1]) << std::endl;
+
+            x = output_shape->Get(1);
+            y = output_shape->Get(2);
+            ch = output_shape->Get(3);
+
+            conv2d(
+                inputDataBuffer, input_x, input_y, input_ch,
+                flat_filter_buffer.data(), flat_bias_buffer.data(),
+                0.0, 0.0,
+                data_buffer, static_cast<int16_t>(output_shape->Get(1)), static_cast<int16_t>(output_shape->Get(2)), static_cast<int16_t>(output_shape->Get(3)),
+                stride
+            );
+
+            // depthwiseConv2d(imageBuffer, input_x, input_y, input_ch,
+            //     flat_filter_buffer.data(), flat_bias_buffer.data(),
+            //     0.0, 0.0,
+            //     output_buffer, static_cast<int16_t>(output_shape->Get(1)), static_cast<int16_t>(output_shape->Get(2)), static_cast<int16_t>(output_shape->Get(3)),
+            //     stride
+            // );
+
+            // pad2d(
+            //     imageBuffer, input_x, input_y, input_ch, 
+            //     flat_filter_buffer.data(), flat_bias_buffer.data(),
+            //     output_buffer, static_cast<int16_t>(output_shape->Get(1)), static_cast<int16_t>(output_shape->Get(2)), static_cast<int16_t>(output_shape->Get(3)),
+            //     0
+            // );
+        }     
+        break;
+
+        case tflite::BuiltinOperator_DEPTHWISE_CONV_2D:
+        {
+            const tflite::DepthwiseConv2DOptions* conv_options = op->builtin_options_as_DepthwiseConv2DOptions();
+            uint8_t stride = conv_options-> stride_h();
+
+            auto filter_tensor = subgraph->tensors()->Get(op->inputs()->Get(1));
+            auto filter_shape = filter_tensor->shape();
+            auto filter_type = filter_tensor->type();
+
+            auto filter_buffer = tf_model->buffers()->Get(filter_tensor->buffer());
+            size_t filter_buffer_size = filter_buffer->data()->size() / sizeof(float);
+            std::cout << "buffer size is : "<< filter_buffer_size << std::endl;
+            std::vector<float> flat_filter_buffer(filter_buffer_size);
+
+            // get  bias info
+            auto bias_tensor = subgraph->tensors()->Get(op->inputs()->Get(2));
+            auto bias_shape = bias_tensor->shape();
+            auto bias_type = bias_tensor->type();
+
+            auto bias_buffer = tf_model->buffers()->Get(bias_tensor->buffer());
+            size_t bias_buffer_size = bias_buffer->data()->size() / sizeof(float);
+            std::vector<float> flat_bias_buffer(bias_buffer_size);
+            
+
+            // // kernel_buffer to  flat kernel buffer
+            std::memcpy(flat_filter_buffer.data(), filter_buffer->data()->data(), filter_buffer->data()->size());
+            std::memcpy(flat_bias_buffer.data(), bias_buffer->data()->data(), bias_buffer->data()->size());
             
             auto output_tensor = subgraph->tensors()->Get(op->outputs()->Get(0));
             // [-1, h, w, c]
@@ -96,21 +165,19 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
 
             // temp output buffer -> 값 계산해보고 타입 변환 해줘야됌!
             int8_t output_buffer[output_shape->Get(1) * output_shape->Get(2) * output_shape->Get(3)];
-            std::cout << "iamgeBuffer_index is : " << imageBuffer_size << std::endl;
-            std::cout << "image buffer in last index : " << static_cast<int>(imageBuffer[imageBuffer_size - 1]) << std::endl;
 
-            conv2d(
-                imageBuffer, input_x, input_y, input_ch, 
+            depthwiseConv2d(
+                data_buffer, x, y, ch,
                 flat_filter_buffer.data(), flat_bias_buffer.data(),
-                6.0, 0.0, 
+                0.0, 0.0,
                 output_buffer, static_cast<int16_t>(output_shape->Get(1)), static_cast<int16_t>(output_shape->Get(2)), static_cast<int16_t>(output_shape->Get(3)),
-                0
+                stride
             );
-            
+
             flag = true;
-        } 
-            
-            break;
+        }
+
+        
         
         default:
             break;
@@ -138,13 +205,141 @@ void print_padded_channel_to_file(std::ofstream &out_file, uint8_t *data, int wi
 void CodeGenerator::conv2d(
     uint8_t *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
     const float *kernel, const float *bias, 
-    const int32_t output_activation_min,
-    const int32_t output_activation_max, 
-    int8_t *output, const int16_t output_x, const uint16_t output_y, const uint16_t output_ch,
+    const float output_activation_min,
+    const float output_activation_max, 
+    int8_t *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
+    uint8_t stride_value
+)
+{
+    // Output dimensions
+    const int output_width = output_x;
+    const int output_height = output_y;
+    const int output_channels = output_ch;
+
+    const int kernel_size = 3;
+
+    for (int oc = 0; oc < output_channels; ++oc) { 
+        for (int oy = 0; oy < output_height; ++oy) { 
+            for (int ox = 0; ox < output_width; ++ox) { 
+                float acc = 0.0f;
+                for (int ic = 0; ic < input_ch; ++ic) { 
+                    for (int ky = 0; ky < kernel_size; ++ky) { 
+                        for (int kx = 0; kx < kernel_size; ++kx) { 
+                            int ix = ox * stride_value + kx;
+                            int iy = oy * stride_value + ky;
+                            if (ix < input_x && iy < input_y) {
+                                int input_index = (iy * input_x + ix) * input_ch + ic;
+                                int kernel_index = ((oc * kernel_size * kernel_size * input_ch) +
+                                                    (ky * kernel_size * input_ch) +
+                                                    (kx * input_ch) + ic);
+                                acc += input[input_index] * kernel[kernel_index];
+                            }
+                        }
+                    }
+                }
+                // Add bias and apply ReLU6
+                acc += bias[oc];
+                acc = std::max(0.0f, std::min(acc, 6.0f)); // ReLU6
+
+                // Store the result in the output tensor (convert float to int8_t)
+                int output_index = (oy * output_x + ox) * output_channels + oc;
+                output[output_index] = static_cast<int8_t>(std::max(std::min(acc, 127.0f), -128.0f)); // Clamp to int8_t range
+            }
+        }
+    }
+
+    // Write output tensor to file
+    std::ofstream out_file("outputConv2d.txt");
+    if (out_file.is_open()) {
+        for (int oc = 0; oc < output_channels; ++oc) {
+            out_file << "Output Channel " << oc + 1 << ":" << std::endl;
+            for (int oy = 0; oy < output_height; ++oy) {
+                for (int ox = 0; ox < output_width; ++ox) {
+                    int output_index = (oy * output_x + ox) * output_channels + oc;
+                    out_file << static_cast<int>(output[output_index]) << " ";
+                }
+                out_file << std::endl;
+            }
+            out_file << std::endl;
+        }
+        out_file.close(); // Close the file after writing
+    } else {
+        std::cerr << "Unable to open file for writing!" << std::endl;
+    }
+}
+
+void CodeGenerator::depthwiseConv2d(
+    int8_t *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
+    const float *kernel, const float *bias, 
+    const float output_activation_min,
+    const float output_activation_max, 
+    int8_t *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
+    uint8_t stride_value
+)
+{
+    // Output dimensions
+    const int output_width = output_x;
+    const int output_height = output_y;
+    const int output_channels = output_ch;
+
+    const int kernel_size = 3;
+
+    // Depthwise convolution operation
+    for (int ic = 0; ic < input_ch; ++ic) {  // Input (and output) channels loop
+        for (int oy = 0; oy < output_height; ++oy) {  // Output height loop
+            for (int ox = 0; ox < output_width; ++ox) {  // Output width loop
+                float acc = 0.0f;
+                for (int ky = 0; ky < kernel_size; ++ky) {  // Kernel height loop
+                    for (int kx = 0; kx < kernel_size; ++kx) {  // Kernel width loop
+                        int ix = ox * stride_value + kx;
+                        int iy = oy * stride_value + ky;
+                        if (ix < input_x && iy < input_y) {
+                            int input_index = (iy * input_x + ix) * input_ch + ic;
+                            int kernel_index = (ic * kernel_size * kernel_size) + (ky * kernel_size + kx);
+                            acc += input[input_index] * kernel[kernel_index];
+                        }
+                    }
+                }
+                // Add bias and apply ReLU6
+                acc += bias[ic];
+                acc = std::max(0.0f, std::min(acc, 6.0f));  // ReLU6
+
+                // Store the result in the output tensor (convert float to int8_t)
+                int output_index = (oy * output_x + ox) * output_channels + ic;
+                output[output_index] = static_cast<int8_t>(std::max(std::min(acc, 127.0f), -128.0f));  // Clamp to int8_t range
+            }
+        }
+    }
+
+    // Write output tensor to file
+    std::ofstream out_file("outputDepthwiseConv2d.txt");
+    if (out_file.is_open()) {
+        for (int ic = 0; ic < input_ch; ++ic) {
+            out_file << "Output Channel " << ic + 1 << ":" << std::endl;
+            for (int oy = 0; oy < output_height; ++oy) {
+                for (int ox = 0; ox < output_width; ++ox) {
+                    int output_index = (oy * output_x + ox) * output_channels + ic;
+                    out_file << static_cast<int>(output[output_index]) << " ";
+                }
+                out_file << std::endl;
+            }
+            out_file << std::endl;
+        }
+        out_file.close();  // Close the file after writing
+    } else {
+        std::cerr << "Unable to open file for writing!" << std::endl;
+    }
+}
+
+
+std::vector<uint8_t> CodeGenerator::pad2d(
+    uint8_t *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
+    const float *kernel, const float *bias, 
+    int8_t *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
     int8_t pad_value
 )
 {
-    // Allocate memory for padded input data
+        // Allocate memory for padded input data
     std::vector<uint8_t> padded_input((input_x + 2) * (input_y + 2) * input_ch, pad_value);
 
     // Set up pointers for copying data
@@ -168,7 +363,7 @@ void CodeGenerator::conv2d(
     std::ofstream out_file("test.txt");
 
     if (out_file.is_open()) {
-        // Write padded input data to file
+        
         padded_ptr = padded_input.data();  // Reset pointer to start of padded input data
         for (int c = 0; c < input_ch; ++c) {
             out_file << "Channel " << c + 1 << ":" << std::endl;
@@ -181,4 +376,6 @@ void CodeGenerator::conv2d(
     } else {
         std::cerr << "Unable to open file for writing!" << std::endl;
     }
-}
+
+    return padded_input;
+}   

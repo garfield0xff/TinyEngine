@@ -35,15 +35,8 @@ int main()
     unique_ptr<tflite::FlatBufferModel> model = tflite::FlatBufferModel::BuildFromFile(model_path);
     if(!model) { cerr << "Failed to load model" << std::endl; return -1;}
 
-    
-
     //read input image
     Mat img = imread(img_path, IMREAD_COLOR);
-
-    std::cout << "img Channels: " << img.channels() << std::endl;
-    std::cout << "img Type: " << img.type() << std::endl;
-    std::cout << "img Size: " << img.size() << std::endl;
-
     Mat resize_img;
     resize(img, resize_img, Size(224, 224));
 
@@ -58,8 +51,7 @@ int main()
     for(int i = 0; i < imageBuffer_size; ++i) {
         imageBuffer[i] = flat_img.at<uchar>(i);  
     }
-    std::cout << "imageBuffer last index : " << static_cast<int>(imageBuffer[imageBuffer_size-1]) << std::endl;
-
+    
     CodeGenerator cg1;
     cg1.setImageInputAnd8bitDataBuffer(
         resize_img.rows, resize_img.cols, resize_img.channels(), 
