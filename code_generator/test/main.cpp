@@ -8,6 +8,7 @@
 #include <tensorflow/lite/schema/schema_generated.h>
 
 #include "code_generator.h"
+#include <fstream>
 
 using namespace std;
 using namespace cv;
@@ -28,7 +29,7 @@ int8_t bit8_quantization(float value, float min, float max) {
 int main()
 {
     // set image and model path
-    const char* img_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/test/person2.png";
+    const char* img_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/test/person3.png";
     const char* model_path = "/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/model/person_detection_model.tflite";
 
     // set tensorflow model
@@ -38,19 +39,23 @@ int main()
     //read input image
     Mat img = imread(img_path, IMREAD_COLOR);
     Mat resize_img;
-    resize(img, resize_img, Size(224, 224));
 
+    resize(img, resize_img, Size(224, 224));
     // (H, W, C) -> (H * W * C) 
     Mat flat_img = resize_img.reshape(1, 1);
+    // flat_img.convertTo(flat_img, CV_32F, 1.0 / 255.0);
+    flat_img.convertTo(flat_img, CV_32F, 1.0 / 127.5, -1.0);
+
     std::cout << flat_img.cols << std::endl;
     uint32_t imageBuffer_size = flat_img.cols;
-    uint8_t* imageBuffer = new uint8_t[imageBuffer_size];
+    std::cout << imageBuffer_size << std::endl;
+    float* imageBuffer = new float[imageBuffer_size];
 
-    int iterations = 10;  
-
+    
     for(int i = 0; i < imageBuffer_size; ++i) {
-        imageBuffer[i] = flat_img.at<uchar>(i);  
+        imageBuffer[i] = flat_img.at<float>(i);  
     }
+
     
     CodeGenerator cg1;
     cg1.setImageInputAnd8bitDataBuffer(
@@ -61,6 +66,13 @@ int main()
     cg1.parseTFModel(model->GetModel());
 
     delete[] imageBuffer;
+
+
+    // Mat restored_img = Mat(224, 224, CV_32FC3, imageBuffer).clone();
+    // restored_img.convertTo(restored_img, CV_8UC3, 255.0);
+    // imshow("Restored Image", restored_img);
+    // waitKey(0);
+    // destroyAllWindows();
 
     return 0;
 }
