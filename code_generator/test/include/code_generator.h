@@ -34,7 +34,7 @@ class CodeGenerator {
             const float output_activation_min,
             const float output_activation_max, 
             float *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
-            uint8_t stride_value, int layer_index, bool relu_flag
+            uint8_t stride_value, int layer_index, bool relu_flag, bool pad_is_valid
         );
 
         void depthwiseConv2d(
@@ -43,7 +43,7 @@ class CodeGenerator {
             const float output_activation_min,
             const float output_activation_max, 
             float *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
-            uint8_t stride_value, int layer_index, bool relu_flag
+            uint8_t stride_value, int layer_index, bool relu_flag, bool pad_is_valid
         );
 
         void pad2d(
