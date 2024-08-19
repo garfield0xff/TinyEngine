@@ -24,6 +24,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 set(SOURCES
     main.cpp
     code_generator.cpp
+    validator.cpp
 )
 
 add_executable(CodeGenerator ${SOURCES})

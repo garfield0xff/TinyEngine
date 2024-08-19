@@ -16,16 +16,6 @@ using namespace cv;
 uint16_t image_input_x = 0;
 uint16_t image_input_y = 0;
 
-int8_t bit8_quantization(float value, float min, float max) {
-    float scale = (max - min) / 255.0;
-    int quantized_value = round((value - min) / scale);
-
-    if(quantized_value < -128) quantized_value = - 128;
-    if(quantized_value > 127) quantized_value = 127;
-
-    return static_cast<int8_t>(quantized_value);
-};
-
 int main()
 {
     // set image and model path
@@ -47,10 +37,8 @@ int main()
     
 
     blob = dnn::blobFromImage(blob);
-    // (H, W, C) -> (H * W * C) 
-    
-    
-    // flat_img.convertTo(flat_img, CV_32F, 1.0 / 127.5, -1.0);
+
+
     std::cout << blob.size();
 
     std::cout << blob.size << std::endl;
