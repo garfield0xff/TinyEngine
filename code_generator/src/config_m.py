@@ -87,7 +87,7 @@ def depthwise_conv2d(image, depthwise_kernel, bias, stride=1, padding='valid'):
                 )
 
     # 바이어스 추가
-    output += bias
+    # output += bias
 
     return output
 
@@ -185,4 +185,21 @@ with open(output_file_path, 'w') as f:
         f.write("\n")
 
 print(f"ReLU6 output saved to {output_file_path}")
+
+
+output_file_path = '/Users/gyujinkim/Desktop/Ai/TinyEngine/code_generator/src/dep_conv_relu_output2.txt'
+with open(output_file_path, 'w') as f:
+    channels = dep_relu_output.shape[-1]
+    height = dep_relu_output.shape[1]
+    width = dep_relu_output.shape[2]
+    
+    for c in range(channels):
+        f.write(f"Channel {c + 1}:\n")
+        for y in range(height):
+            values = " ".join([str(int(dep_relu_output[0, y, x, c])) for x in range(width)])
+            f.write(f"{values}\n")
+        f.write("\n")
+
+print(f"ReLU6 output saved to {output_file_path}")
+
 

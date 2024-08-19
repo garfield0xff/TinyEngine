@@ -315,7 +315,8 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
 
             depthwiseConv2d(
                 input_data_buffer, x, y, ch,
-                flat_filter_buffer.data(), flat_bias_buffer.data(), filter_buffer_size, filter_height, filter_width, 
+                flat_filter_buffer.data(),  filter_buffer_size, filter_height, filter_width, 
+                flat_bias_buffer.data(),
                 0.0, 6.0,
                 output_data_buffer, static_cast<int16_t>(output_shape->Get(1)), static_cast<int16_t>(output_shape->Get(2)), static_cast<int16_t>(output_shape->Get(3)),
                 stride, i, relu_flag, pad_is_valid
@@ -353,6 +354,7 @@ void CodeGenerator::parseTFModel(const tflite::Model *tf_model)
             std::cout << "------------------------------------------------" << std::endl;
 
             func_count++;
+            flag = true;
         }
         break;
 
@@ -773,7 +775,8 @@ void CodeGenerator::conv2d(
 
 void CodeGenerator::depthwiseConv2d(
     float *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
-    const float *kernel, const float *bias, size_t kernelSize, int kernel_height, int kernel_width,
+    const float *kernel, size_t kernelSize, int kernel_height, int kernel_width,
+    const float *bias,
     const float output_activation_min,
     const float output_activation_max, 
     float *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
@@ -791,14 +794,12 @@ void CodeGenerator::depthwiseConv2d(
     int padded_y = input_y + 2 * pad_h;
     std::vector<float> padded_input(padded_x * padded_y * input_ch, 0.0f);
 
-    
-
     if (pad_is_same) {
         for (int c = 0; c < input_ch; ++c) {
             for (int y = 0; y < input_y; ++y) {
                 for (int x = 0; x < input_x; ++x) {
-                    int input_index = (y * input_x + x) * input_ch + c;
-                    int padded_index = ((y + pad_h) * padded_x + (x + pad_w)) * input_ch + c;
+                    int input_index = (c * input_y * input_x) + (y * input_x + x);
+                    int padded_index = (c * padded_y * padded_x) + ((y + pad_h) * padded_x + (x + pad_w));
                     padded_input[padded_index] = input[input_index];
                 }
             }
@@ -812,62 +813,53 @@ void CodeGenerator::depthwiseConv2d(
     const int output_height = output_y;
     const int output_channels = output_ch;
 
-    int batch_size = 1;
-    int kernel_size = kernel_width * kernel_height * input_ch; 
+    int flag = 0;
 
-    // Depthwise convolution operation
-    for (int n = 0; n < batch_size; ++n) { // Iterate over batch
-        for (int oc = 0; oc < output_channels; ++oc) { // Iterate over the filters (output channels)
-            for (int oy = 0; oy < output_height; ++oy) { // Iterate over the output spatial dimensions
-                for (int ox = 0; ox < output_width; ++ox) {
-                    float acc = 0.0f;
+    // Depthwise convolution 연산
+    for (int oc = 0; oc < output_channels; ++oc) { // 출력 채널 = 입력 채널
+        for (int oy = 0; oy < output_height; ++oy) { // 출력의 공간적 위치에 대해 반복
+            for (int ox = 0; ox < output_width; ++ox) {
+                float acc = 0.0f;
 
-                    // Perform depthwise convolution (each output channel corresponds to an input channel)
-                    for (int ky = 0; ky < kernel_height; ++ky) {
-                        for (int kx = 0; kx < kernel_width; ++kx) {
-                            int ix = ox * stride_value + kx;
-                            int iy = oy * stride_value + ky;
+                // 커널과 입력의 해당 부분을 곱하고 합산
+                for (int ky = 0; ky < kernel_height; ++ky) {
+                    for (int kx = 0; kx < kernel_width; ++kx) {
+                        int ix = ox * stride_value + kx;
+                        int iy = oy * stride_value + ky;
 
-                            if (ix >= 0 && ix < padded_x && iy >= 0 && iy < padded_y) {
-                                // Since it's depthwise, input channel = output channel (oc)
-                                int input_index = (n * padded_y + iy) * padded_x * input_ch + ix * input_ch + oc;
-                                int flat_kernel_index = oc * kernel_size + ky * kernel_width + kx;
-                                acc += padded_input[input_index] * kernel[flat_kernel_index];
-                            }
+                        if (ix >= 0 && ix < padded_x && iy >= 0 && iy < padded_y) {
+                            // oc는 output_channel이며 각 채널별로 독립적인 인덱싱이 이루어져야 함
+                            int input_index = (oc * padded_y * padded_x) + (iy * padded_x + ix);
+                            int flat_kernel_index = ky * kernel_width + kx + oc * kernel_height * kernel_width;
+                            acc += padded_input[input_index] * kernel[flat_kernel_index];
+
                         }
                     }
-
-                    // Add the bias (if used)
-                    acc += bias[oc];
-
-                    // Apply ReLU or ReLU6 activation if specified
-                    if (relu_flag) {
-                        acc = std::max(output_activation_min, std::min(acc, output_activation_max));
-                    }
-
-                    // Store the result in the output tensor
-                    int output_index = ((n * output_height + oy) * output_width + ox) * output_channels + oc;
-                    output[output_index] = acc;
                 }
+
+                // 바이어스 추가
+                acc += bias[oc];
+
+                // ReLU 활성화 함수 적용
+                if (relu_flag) {
+                    acc = std::max(output_activation_min, std::min(acc, output_activation_max));
+                }
+
+                // 결과를 출력 텐서에 저장
+                int output_index = (oy * output_width + ox) * output_channels + oc;
+                output[output_index] = acc;
             }
         }
     }
 
-    std::cout << "depthwise output indexing..." << std::endl;
-    for (int j = 0; j < 10; j++) {
-        std::cout << output[j] << " ";
-    }
-    std::cout << std::endl;
-
-    // Write output tensor to file
     std::ofstream out_file(layer_path + "depthWiseConv2d_" + std::to_string(layer_index) + ".txt");
     if (out_file.is_open()) {
-        for (int ic = 0; ic < input_ch; ++ic) {
-            out_file << "Output Channel " << ic + 1 << ":" << std::endl;
-            for (int oy = 0; oy < output_height; ++oy) {
-                for (int ox = 0; ox < output_width; ++ox) {
-                    int output_index = (oy * output_width + ox) * output_channels + ic;
-                    out_file << static_cast<int>(output[output_index]) << " ";
+        for (int oc = 0; oc < output_ch; ++oc) {
+            out_file << "Output Channel " << oc + 1 << ":" << std::endl;
+            for (int oy = 0; oy < output_y; ++oy) {
+                for (int ox = 0; ox < output_x; ++ox) {
+                    int output_index = (oy * output_x + ox) * output_ch + oc;
+                    out_file <<  static_cast<int>(output[output_index]) << " ";
                 }
                 out_file << std::endl;
             }
@@ -877,6 +869,8 @@ void CodeGenerator::depthwiseConv2d(
     } else {
         std::cerr << "Unable to open file for writing!" << std::endl;
     }
+
+
 }
 
 

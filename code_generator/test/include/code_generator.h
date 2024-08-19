@@ -39,7 +39,8 @@ class CodeGenerator {
 
         void depthwiseConv2d(
             float *input, const uint8_t input_x, const uint8_t input_y, const uint8_t input_ch,
-            const float *kernel, const float *bias, size_t kernel_size, int kernel_height, int kernel_width,
+            const float *kernel, size_t kernel_size, int kernel_height, int kernel_width,
+            const float *bias,
             const float output_activation_min,
             const float output_activation_max, 
             float *output, const uint16_t output_x, const uint16_t output_y, const uint16_t output_ch,
